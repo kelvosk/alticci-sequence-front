@@ -1,0 +1,32 @@
+<div class="container">
+    <form [formGroup]="sequenceForm" (ngSubmit)="onSubmit()">
+        <div class="group">
+            <label class="n" for="sequence"><h1>Type the value of n: </h1></label>
+            <input id="sequence" name="sequence" formControlName="sequence" placeholder="n" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+        </div>
+    </form>
+        <div class="button">
+            <button (click)="onSubmit()" class="btn btn-success">Send</button>
+            &nbsp;
+            <button (click)="onSubmitClear()" class="btn btn-primary">Clear Cache</button>
+        </div>
+        <div class="message">
+            <p *ngIf="message != null">{{message}}</p>
+        </div>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tr *ngFor='let item of result | keyvalue: returnZero'>
+                    <td>{{ item.key}}</td>
+                    <td>{{ item.value}}</td>
+                </tr>
+            </table>
+        </div>
+</div>
